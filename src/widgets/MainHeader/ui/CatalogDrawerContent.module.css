@@ -1,0 +1,41 @@
+.container {
+  padding: 20px;
+  width: 100%;
+  min-width: 500px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 20px;
+  transition: transform 0.3s ease;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+
+.item p {
+  font-size: 18px;
+  font-weight: 500;
+}
+.logo {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h1 {
+  color: #000000;
+}

@@ -1,0 +1,62 @@
+h1 {
+  color: #ffffff;
+}
+
+h3 {
+  color: #67b3ff;
+}
+
+a {
+  text-decoration: none;
+  transition: transform 0.1s ease;
+  color: white;
+}
+
+a:hover {
+  color: #92c8ff;
+  transform: translateY(-2px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.container {
+  position: sticky;
+  top: 10px;
+  background-color: #212529;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.container__left {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.container__right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+}
+
+.container__right span {
+  font-size: large;
+}
+
+.accountIcon {
+  color: #67b3ff;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
