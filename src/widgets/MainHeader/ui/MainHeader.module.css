@@ -1,18 +1,19 @@
-h1 {
+.container h1 {
   color: #ffffff;
+  font-size: 45px;
 }
 
-h3 {
+.container h3 {
   color: #67b3ff;
 }
 
-a {
+.container a {
   text-decoration: none;
   transition: transform 0.1s ease;
   color: white;
 }
 
-a:hover {
+.container a:hover {
   color: #92c8ff;
   transform: translateY(-2px);
 }
@@ -26,12 +27,14 @@ a:hover {
 .container {
   position: sticky;
   top: 10px;
+  z-index: 100;
   background-color: #212529;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
+  padding: 5px 30px;
+  margin: 10px;
 }
 
 .container__left {

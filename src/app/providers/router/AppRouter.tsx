@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "../../../pages/MainPage";
 import { ROUTES } from "./config";
 import { ModerationPage } from "@/pages/ModerationPage/ui/ModerationPage";
@@ -7,11 +7,15 @@ import { MyLearningPage } from "@/pages/MyLearningPage/ui/MyLearningPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { AuthPage } from "@/pages/AuthPage";
 import RegisterPage from "@/pages/RegisterPage/ui/RegisterPage";
+import { CoursePage, CoursesPage } from "@/pages/CoursesPage";
 
 export const AppRouter = () => {
   return (
     <Routes>
+      <Route path={"/"} element={<Navigate to={ROUTES.MAIN} />} />
       <Route path={ROUTES.MAIN} element={<MainPage />} />
+      <Route path={ROUTES.COURSES} element={<CoursesPage />} />
+      <Route path={ROUTES.COURSE} element={<CoursePage />} />
       <Route path={ROUTES.MY_LEARNING} element={<MyLearningPage />} />
       <Route path={ROUTES.MY_COURSES} element={<MyCoursesPage />} />
       <Route path={ROUTES.MODERATION} element={<ModerationPage />} />

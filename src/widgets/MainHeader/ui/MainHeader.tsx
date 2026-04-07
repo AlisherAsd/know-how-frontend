@@ -13,6 +13,7 @@ export const MainHeader = () => {
 
   const handleCatalogClick = () => {
     setIsDrawerOpen(false);
+    navigate(ROUTES.COURSES);
   };
   return (
     <>
