@@ -3,9 +3,9 @@ import s from "./CoursesList.module.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-import { type FC } from "react";
+import { useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "@/app/providers/router/config";
+import { PayCourseModal } from "./PayCourseModal";
 
 type Props = {
   course: {
@@ -19,13 +19,25 @@ type Props = {
 };
 
 export const CourseItem: FC<Props> = ({ course }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleClick = () => {
-    navigate(ROUTES.COURSES + `/${course.id}`);
+    if (course.id === 1) {
+      setIsOpen(true);
+      return;
+    }
+    navigate("/courses" + `/${course.id}`);
   };
+
+  function handleClickFavorite(e: React.MouseEvent<HTMLSpanElement>) {
+    e.stopPropagation();
+    setIsFavorite((prev) => !prev);
+  }
   return (
     <div key={course.id} className={s.container__item} onClick={handleClick}>
+      <PayCourseModal course={course} isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <div className={s.item__header}>
         <div>
           <h3>{course.title}</h3>
@@ -38,8 +50,8 @@ export const CourseItem: FC<Props> = ({ course }) => {
           <span>
             <StarBorderIcon /> 4.5
           </span>
-          <span>
-            <FavoriteBorderIcon /> 5
+          <span onClick={(e) => handleClickFavorite(e)}>
+            <FavoriteBorderIcon className={isFavorite ? s.favorite : ""} /> 5
           </span>
           <span>
             <AccessTimeIcon /> 5 ч

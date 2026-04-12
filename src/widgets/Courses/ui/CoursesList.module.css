@@ -132,3 +132,7 @@
     grid-template-columns: 1fr; /* На телефонах одна колонка */
   }
 }
+
+.favorite {
+  color: red;
+}

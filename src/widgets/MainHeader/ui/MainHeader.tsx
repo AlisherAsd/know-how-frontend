@@ -11,9 +11,9 @@ export const MainHeader = () => {
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleCatalogClick = () => {
+  const handleCatalogClick = (category: string) => {
     setIsDrawerOpen(false);
-    navigate(ROUTES.COURSES);
+    navigate(ROUTES.COURSES + `?category=${category}`);
   };
   return (
     <>

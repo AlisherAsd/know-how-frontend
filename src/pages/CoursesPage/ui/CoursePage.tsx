@@ -1,30 +1,45 @@
-import { useEffect } from "react";
+import { useScrollTop } from "@/shared/hooks/useScrollTop";
 import ReactMarkdown from "react-markdown";
 
 const text = `
-# React + TypeScript + Vite
+## Запуск через Docker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Требования
 
-Currently, two official plugins are available:
+- [Docker](https://docs.docker.com/get-docker/) и Docker Compose (v2).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Переменные окружения
 
-![иконка](https://cdn.stepik.net/media/cache/images/courses/250067/cover_MR1S7CZ/fe62d82203e691122e706982f7e39571.png)
+Compose подставляет значения из **файв корне репозитория** (рядом с docker-compose.yml). Этот файл **не коммитьте**, если в нём секреты.
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+env
+# Обязательно для функций AI (OpenRouter), иначе в образ фронта попадёт пустой ключ
+VITE_OPENROUTER_API_KEY=sk-or-v1-ваш_ключ
+
+# Опционально: если меняете порт или хост API, сначала поправьте docker-compose.yml
+# (build.args.VITE_BASE_API_URL), затем пересоберите frontend
+
+
+
+### Команды
+
+Из корня репозитория:
+
+bash
+docker compose build
+docker compose up
+
+
+- Приложение (UI): [http://localhost:3000](http://localhost:3000)
+- API: [http://localhost:8080/items](http://localhost:8080/items) (корень 
+
+
+Alisher Sharipov
 `;
 
 export const CoursePage = () => {
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, []);
+  useScrollTop();
   return (
     <div>
       <ReactMarkdown>{text}</ReactMarkdown>

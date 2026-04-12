@@ -1,3 +1,9 @@
+import { ModerationCoursesList } from "@/widgets/Courses/ui/ModerationCoursesList";
+
 export const ModerationPage = () => {
-  return <div>ModerationPage</div>;
+  return (
+    <div>
+      <ModerationCoursesList />
+    </div>
+  );
 };
