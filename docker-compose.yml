@@ -1,0 +1,9 @@
+services:
+  knowhow-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: knowhow-frontend
+    ports:
+      - "3000:80"
+    restart: unless-stopped
