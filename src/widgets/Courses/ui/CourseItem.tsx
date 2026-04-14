@@ -3,10 +3,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { type Course } from "@/shared/config/mockCourses";
 import { PayCourseModal } from "./PayCourseModal";
-import AutoStoriesRoundedIcon from "@mui/icons-material/AutoStoriesRounded";
 import BoltRoundedIcon from "@mui/icons-material/BoltRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
 type Props = {
   course: Course;
@@ -37,20 +35,27 @@ export const CourseItem: FC<Props> = ({ course }) => {
 
         <div className="space-y-5 p-6">
           <div>
-            <p className="text-sm text-slate-500">{course.author} · {course.role}</p>
-            <h3 className="mt-2 text-2xl font-semibold leading-tight text-slate-950">{course.title}</h3>
+            <p className="text-sm text-slate-500">
+              {course.author} · {course.role}
+            </p>
+            <h3 className="mt-2 text-2xl font-semibold leading-tight text-slate-950">
+              {course.title}
+            </h3>
             <p className="mt-3 text-sm leading-6 text-slate-600">{course.description}</p>
           </div>
 
           <div className="flex flex-wrap gap-2">
             {course.tags.map((tag) => (
-              <span key={tag} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">
+              <span
+                key={tag}
+                className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600"
+              >
                 {tag}
               </span>
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-3 text-sm text-slate-600">
+          {/* <div className="grid grid-cols-2 gap-3 text-sm text-slate-600">
             <div className="rounded-2xl bg-slate-50 p-3">
               <div className="flex items-center gap-2">
                 <AutoStoriesRoundedIcon fontSize="small" />
@@ -65,7 +70,7 @@ export const CourseItem: FC<Props> = ({ course }) => {
               </div>
               <p className="mt-2 text-xs text-slate-400">{course.reviews} отзывов</p>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-1">

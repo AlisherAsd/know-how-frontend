@@ -12,8 +12,8 @@ import { CourseLessonPage, CoursePage, CoursesPage, CreateCoursePage } from "@/p
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path={"/"} element={<Navigate to={ROUTES.MAIN} />} />
-      <Route path={"*"} element={<Navigate to={ROUTES.MAIN} />} />
+      <Route path={"/"} element={<Navigate to={ROUTES.COURSES} />} />
+      <Route path={"*"} element={<Navigate to={ROUTES.COURSES} />} />
       <Route path={ROUTES.MAIN} element={<MainPage />} />
       <Route path={ROUTES.COURSES} element={<CoursesPage />} />
       <Route path={ROUTES.COURSE} element={<CoursePage />} />
