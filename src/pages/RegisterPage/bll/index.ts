@@ -7,6 +7,7 @@ export const useRegisterPage = () => {
     username: "",
     password: "",
     email: "",
+    moderatorCode: "",
   });
   const { mutate, isPending } = useRegister();
 

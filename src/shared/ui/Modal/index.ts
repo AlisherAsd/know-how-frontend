@@ -1,3 +1,3 @@
-import { AppModal } from "./ui/AppModal";
+import { ConfirmModal } from "./ui/ConfirmModal";
 
-export { AppModal };
+export { ConfirmModal };

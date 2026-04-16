@@ -16,20 +16,12 @@ const variants: Record<Variant, string> = {
   ghost: "bg-white/80 text-slate-900 ring-1 ring-slate-200 hover:bg-white",
   success:
     "bg-emerald-500 text-white shadow-[0_18px_40px_-20px_rgba(16,185,129,0.8)] hover:bg-emerald-400",
-  danger:
-    "bg-rose-500 text-white shadow-[0_18px_40px_-20px_rgba(244,63,94,0.8)] hover:bg-rose-400",
+  danger: "bg-rose-500 text-white shadow-[0_18px_40px_-20px_rgba(244,63,94,0.8)] hover:bg-rose-400",
 };
 
-export const AppButton = ({
-  children,
-  type = "button",
-  variant = "primary",
-  className = "",
-  ...rest
-}: Props) => {
+export const AppButton = ({ children, variant = "primary", className = "", ...rest }: Props) => {
   return (
     <button
-      type={type}
       className={`inline-flex cursor-pointer items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition duration-200 ${variants[variant]} ${className}`}
       {...rest}
     >

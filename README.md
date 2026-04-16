@@ -6,4 +6,6 @@
 
 ### Мокап - <https://docs.google.com/drawings/d/1xYfyB5h1G_8eafEfeZd__3_nxpzpRB6Zf9OIysErCqM/edit?usp=sharing>
 
+### Сваггер - <http://localhost:8080/swagger-ui/index.html>
+
 Alisher Sharipov

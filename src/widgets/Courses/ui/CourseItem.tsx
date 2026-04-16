@@ -1,8 +1,6 @@
 import type { FC } from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { type Course } from "@/shared/config/mockCourses";
-import { PayCourseModal } from "./PayCourseModal";
 import BoltRoundedIcon from "@mui/icons-material/BoltRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 
@@ -11,11 +9,8 @@ type Props = {
 };
 
 export const CourseItem: FC<Props> = ({ course }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
-      <PayCourseModal course={course} isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <article className="group overflow-hidden rounded-[32px] border border-white/70 bg-white/80 shadow-[0_30px_90px_-60px_rgba(15,23,42,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_-45px_rgba(15,23,42,0.45)]">
         <div className="relative h-56 overflow-hidden">
           <img
@@ -84,11 +79,7 @@ export const CourseItem: FC<Props> = ({ course }) => {
               </p>
             </div>
             <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => setIsOpen(true)}
-                className="cursor-pointer rounded-full bg-slate-100 px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-200"
-              >
+              <button className="cursor-pointer rounded-full bg-slate-100 px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-200">
                 Быстрый просмотр
               </button>
               <Link

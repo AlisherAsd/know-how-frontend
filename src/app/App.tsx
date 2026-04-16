@@ -1,9 +1,17 @@
 import { AppRouter } from "@/app/providers";
+import { authMe } from "@/feature/auth/authThunks";
 import { MainFooter } from "@/widgets/MainFooter";
 import { MainHeader } from "@/widgets/MainHeader";
+import { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { useAppDispatch } from "./store/hooks";
 
 export function App() {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(authMe());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <div className="relative min-h-screen">

@@ -5,15 +5,19 @@ import { App } from "./App";
 import { initApp } from "./providers/ init/initApp";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SnackbarProvider } from "notistack";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-initApp();
 const queryClient = new QueryClient();
+initApp();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <SnackbarProvider maxSnack={3}>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </SnackbarProvider>
     </QueryClientProvider>
   </StrictMode>

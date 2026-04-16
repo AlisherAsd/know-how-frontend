@@ -15,3 +15,7 @@ export const register = async (username: string, password: string, email: string
     email,
   });
 };
+
+export const logout = async () => {
+  return api.post(ROUTES.LOGOUT);
+};

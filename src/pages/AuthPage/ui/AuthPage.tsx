@@ -18,12 +18,12 @@ export default function AuthPage() {
 
             <form className="mt-8 space-y-5" onSubmit={(event) => event.preventDefault()}>
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-slate-700">Email</span>
+                <span className="mb-2 block text-sm font-medium text-slate-700">Имя</span>
                 <input
                   value={user.username}
                   onChange={(e) => setUser((val) => ({ ...val, username: e.target.value }))}
-                  type="email"
-                  placeholder="you@example.com"
+                  type="Имя"
+                  placeholder="Ivan Ivanov"
                   className="w-full rounded-[22px] border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-slate-950 focus:bg-white"
                 />
               </label>
@@ -42,7 +42,6 @@ export default function AuthPage() {
               <AppButton
                 disabled={isPending}
                 onClick={handleLogin}
-                type="button"
                 className="w-full justify-center"
               >
                 Войти в аккаунт

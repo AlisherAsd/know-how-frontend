@@ -66,7 +66,6 @@ export default function RegisterPage() {
 
               <AppButton
                 onClick={handleRegister}
-                type="button"
                 disabled={isPending}
                 className="mt-1 w-full justify-center"
               >
