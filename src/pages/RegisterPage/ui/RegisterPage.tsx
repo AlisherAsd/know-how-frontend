@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useRegisterPage } from "../bll";
 
 export default function RegisterPage() {
-  const { user, setUser, isPending, handleRegister } = useRegisterPage();
+  const { user, setUser, isPending, handleRegister, handleGenerateData } = useRegisterPage();
 
   return (
     <div className="grid min-h-[calc(100vh-200px)] items-center py-8 sm:py-12">
@@ -71,6 +71,7 @@ export default function RegisterPage() {
               >
                 Создать аккаунт
               </AppButton>
+              <AppButton disabled={isPending} onClick={handleGenerateData} className="w-full justify-center">Сгенериросать данные</AppButton>
             </form>
 
             <p className="mt-6 text-sm text-slate-500">

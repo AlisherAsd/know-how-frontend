@@ -1,12 +1,14 @@
 import { CoursesList } from "@/widgets/Courses";
 import { useSearchParams } from "react-router-dom";
 import { useScrollTop } from "@/shared/hooks/useScrollTop";
+import { useCourses } from "@/entities/courses/composables/useCourses";
 
 export const CoursesPage = () => {
   const [searchParams] = useSearchParams();
   useScrollTop();
 
   const category = searchParams.get("category");
+  const { data, isPending } = useCourses();
 
   return (
     <div className="space-y-8 py-8 sm:py-10">
@@ -26,6 +28,8 @@ export const CoursesPage = () => {
           title={category ? `Подборка по категории: ${category}` : "Весь каталог курсов"}
           subtitle="Сетка собрана так, чтобы ее потом было легко связать с API, поиском и фильтрацией без переписывания UI."
           activeCategory={category}
+          courses={data}
+          isPending={isPending}
         />
       </section>
     </div>

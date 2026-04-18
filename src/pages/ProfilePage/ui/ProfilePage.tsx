@@ -3,6 +3,7 @@ import { BalanceModal } from "./BalanceModal";
 import { AppButton } from "@/shared/ui/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { LogoutModal } from "./LogoutModal";
+import { ProfileSkeleton } from "./ProfileSkeleton";
 
 export const ProfilePage = () => {
   const [isOpenLogout, setIsOpenLogout] = useState(false);
@@ -14,10 +15,7 @@ export const ProfilePage = () => {
       <LogoutModal open={isOpenLogout} handleClose={() => setIsOpenLogout(false)} />
       <div className="space-y-8 py-8 sm:py-10">
         {isLoading ? (
-          <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <div className="animate-pulse sm:p-10 rounded-[40px] bg-gray-200" />
-            <div className="animate-pulse sm:p-8 rounded-[40px] bg-gray-200" />
-          </section>
+          <ProfileSkeleton />
         ) : (
           <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
             <div className="rounded-[40px] bg-slate-950 p-8 text-white shadow-[0_45px_120px_-65px_rgba(15,23,42,1)] sm:p-10">
