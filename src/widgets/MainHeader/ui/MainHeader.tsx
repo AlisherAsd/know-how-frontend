@@ -40,7 +40,7 @@ export const MainHeader = () => {
               </Link>
               <nav className="hidden xl:flex flex-wrap items-center gap-2">
                 {isAuth ? (
-                  NAV_ITEMS.map((item) => <NavLinkItem item={item} />)
+                  NAV_ITEMS.map((item) => <NavLinkItem key={item.to} item={item} />)
                 ) : (
                   <NavLinkItem item={{ to: ROUTES.COURSES, label: "Каталог" }} />
                 )}

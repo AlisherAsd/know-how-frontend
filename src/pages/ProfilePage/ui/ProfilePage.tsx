@@ -1,26 +1,32 @@
-import { useState } from "react";
-import { BalanceModal } from "./BalanceModal";
+import { BalanceModal } from "../../../widgets/ProfilePage /ui/BalanceModal";
 import { AppButton } from "@/shared/ui/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { LogoutModal } from "./LogoutModal";
+import { LogoutModal } from "../../../shared/ui/Modal/ui/LogoutModal";
 import { ProfileSkeleton } from "./ProfileSkeleton";
+import { useProfilePage } from "../bll";
+import MailIcon from "@mui/icons-material/Mail";
 
 export const ProfilePage = () => {
-  const [isOpenLogout, setIsOpenLogout] = useState(false);
-  const [isOpenBalance, setIsOpenBalance] = useState(false);
-  const [isLoading] = useState(false);
+  const { isOpenBalance, setIsOpenBalance, isOpenLogout, setIsOpenLogout, data, isPending } =
+    useProfilePage();
   return (
     <>
       <BalanceModal open={isOpenBalance} handleClose={() => setIsOpenBalance(false)} />
       <LogoutModal open={isOpenLogout} handleClose={() => setIsOpenLogout(false)} />
       <div className="space-y-8 py-8 sm:py-10">
-        {isLoading ? (
+        {isPending ? (
           <ProfileSkeleton />
         ) : (
           <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
             <div className="rounded-[40px] bg-slate-950 p-8 text-white shadow-[0_45px_120px_-65px_rgba(15,23,42,1)] sm:p-10">
               <p className="text-sm uppercase tracking-[0.28em] text-teal-300">Профиль автора</p>
-              <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Алина Журавлева</h1>
+              <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">
+                {data?.username || "Не указано"}
+              </h1>
+              <div className="mt-2 flex items-center gap-3">
+                <MailIcon />
+                <h3 className=" text-xl font-semibold">{data?.email || "Не указано"}</h3>
+              </div>
               <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">
                 Frontend-разработчик и автор практичных курсов для тех, кто хочет быстро перейти от
                 теории к первому результату.
@@ -31,7 +37,7 @@ export const ProfilePage = () => {
                   onClick={() => setIsOpenBalance(true)}
                 >
                   <p className="text-sm text-slate-400">На балансе</p>
-                  <p className="mt-2 text-3xl font-semibold">264 эфира</p>
+                  <p className="mt-2 text-3xl font-semibold">{data?.balance?.coins || 0} эфира</p>
                 </div>
                 <div className="rounded-[28px] bg-white/8 p-5">
                   <p className="text-sm text-slate-400">Отзывы</p>
@@ -66,12 +72,16 @@ export const ProfilePage = () => {
                   <p className="mt-2 text-lg font-semibold text-slate-950">Пользователь</p>
                 </div>
                 <div className="rounded-[24px] bg-slate-50 p-5">
-                  <p className="text-sm text-slate-400">Курсов опубликовано</p>
-                  <p className="mt-2 text-lg font-semibold text-slate-950">4</p>
+                  <p className="text-sm text-slate-400">Кол-во поставленных оценок </p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">
+                    {data?.countOfGivenGrades || 0}
+                  </p>
                 </div>
                 <div className="rounded-[24px] bg-slate-50 p-5">
                   <p className="text-sm text-slate-400">Курсов куплено</p>
-                  <p className="mt-2 text-lg font-semibold text-slate-950">9</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">
+                    {data?.countOfPurchasedCourses || 0}
+                  </p>
                 </div>
               </div>
 
