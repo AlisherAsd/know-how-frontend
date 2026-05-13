@@ -55,11 +55,15 @@ export const CoursesList: FC<Props> = ({
       </div>
 
       {!isPending ? (
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {courses.map((course) => (
-            <CourseItem key={course.id} course={course} />
-          ))}
-        </div>
+        courses.length ? (
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {courses.map((course) => (
+              <CourseItem key={course.id} course={course} />
+            ))}
+          </div>
+        ) : (
+          <div>Данных нет(</div>
+        )
       ) : (
         <CoursesSkeleton />
       )}

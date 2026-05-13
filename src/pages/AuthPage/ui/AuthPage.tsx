@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuthPage } from "../bll";
 
 export default function AuthPage() {
-  const { user, setUser, isPending, handleLogin } = useAuthPage();
+  const { user, setUser, handleLogin, disabledBtn } = useAuthPage();
 
   return (
     <div className="grid min-h-[calc(100vh-200px)] items-center py-8 sm:py-12">
@@ -40,7 +40,7 @@ export default function AuthPage() {
               </label>
 
               <AppButton
-                disabled={isPending}
+                disabled={disabledBtn}
                 onClick={handleLogin}
                 className="w-full justify-center"
               >

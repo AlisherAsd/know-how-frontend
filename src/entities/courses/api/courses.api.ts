@@ -1,6 +1,11 @@
 import { ROUTES } from "../config/courses.config";
-import axios from "axios";
+import type { CoursesCreateData } from "../types/courses.types";
+import { api } from "@/shared/api/client";
 
 export const courses = async () => {
-  return axios.get(ROUTES.COURSES).then((res) => res.data);
+  return api.get(ROUTES.COURSES).then((res) => res.data);
+};
+
+export const coursesCreate = async (data: CoursesCreateData) => {
+  return api.post(ROUTES.COURSE_CREATE, data);
 };

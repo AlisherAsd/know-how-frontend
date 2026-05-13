@@ -4,3 +4,10 @@ export interface CoursesResponseItem {
   title: string;
   body: string;
 }
+
+export interface CoursesCreateData {
+  title: string
+  description: string
+  courseText: string
+  tags: string[]
+}
