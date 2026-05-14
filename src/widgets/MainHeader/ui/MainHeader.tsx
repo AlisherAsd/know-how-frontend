@@ -39,11 +39,12 @@ export const MainHeader = () => {
                 </div>
               </Link>
               <nav className="hidden xl:flex flex-wrap items-center gap-2">
-                {user?.role === "MODERATOR" && isAuth && (
-                  <NavLinkItem item={{ to: ROUTES.MODERATION, label: "Модерация" }} />
-                )}
                 {isAuth ? (
-                  NAV_ITEMS.map((item) => <NavLinkItem key={item.to} item={item} />)
+                  user?.role === "USER" ? (
+                    NAV_ITEMS.map((item) => <NavLinkItem key={item.to} item={item} />)
+                  ) : (
+                    <NavLinkItem item={{ to: ROUTES.MODERATION, label: "Модерация" }} />
+                  )
                 ) : (
                   <NavLinkItem item={{ to: ROUTES.COURSES, label: "Каталог" }} />
                 )}

@@ -14,6 +14,7 @@ import {
   courses,
   coursesCreate,
   moderationCourses,
+  myCourses,
 } from "../api/courses.api";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
@@ -22,10 +23,17 @@ import { ROUTES } from "@/app/providers/router/config";
 const getErrorMessage = (error: unknown) =>
   error instanceof Error ? error.message : "Неизвестная ошибка";
 
-export const useCourses = (): UseQueryResult<CoursesResponseItem[]> => {
+export const useCourses = (search: string): UseQueryResult<CoursesResponseItem[]> => {
   return useQuery({
-    queryKey: ["courses"],
-    queryFn: () => courses(),
+    queryKey: ["courses", search],
+    queryFn: () => courses(search),
+  });
+};
+
+export const useMyCourses = (): UseQueryResult<CoursesResponseItem[]> => {
+  return useQuery({
+    queryKey: ["my_courses"],
+    queryFn: () => myCourses(),
   });
 };
 

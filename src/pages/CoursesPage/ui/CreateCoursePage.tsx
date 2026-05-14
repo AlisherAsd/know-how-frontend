@@ -72,9 +72,7 @@ export const CreateCoursePage = () => {
                     disabled={isTagsPending}
                     className="w-full appearance-none rounded-[22px] border border-slate-200 bg-slate-50 px-12 py-4 outline-none transition focus:border-slate-950 focus:bg-white disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    <option value="">
-                      {isTagsPending ? "Загружаем теги..." : "Выберите тег"}
-                    </option>
+                    <option value="">{isTagsPending ? "Загружаем теги..." : "Выберите тег"}</option>
                     {tags.map((tag) => (
                       <option key={tag} value={tag}>
                         {tag}
@@ -129,18 +127,18 @@ export const CreateCoursePage = () => {
                 <div className="rounded-[28px] bg-slate-950 p-5 text-white">
                   <input
                     type="number"
+                    value={20}
                     placeholder="45"
                     className="w-full border-none bg-transparent text-4xl font-semibold outline-none"
                   />
-                  <p className="mt-2 text-sm text-slate-300">Автор сам задает стоимость курса</p>
                 </div>
               </label>
             </div>
 
             <div className="flex flex-wrap gap-3">
-                <AppButton onClick={handleCreateCourse} disabled={isPending}>
-                  Отправить на модерацию
-                </AppButton>
+              <AppButton onClick={handleCreateCourse} disabled={isPending}>
+                Отправить на модерацию
+              </AppButton>
             </div>
           </form>
 

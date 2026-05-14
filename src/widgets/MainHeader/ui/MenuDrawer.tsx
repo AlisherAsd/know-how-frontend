@@ -37,6 +37,7 @@ export const MenuDrawer: FC<Props> = ({ open, setOpen, isAuth, role }) => {
             </NavLink>
           )}
           {isAuth &&
+            role !== "MODERATOR" &&
             NAV_ITEMS_MOBILE.map((item) => (
               <NavLink
                 key={item.to}

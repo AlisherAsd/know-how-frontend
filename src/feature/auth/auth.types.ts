@@ -6,6 +6,7 @@ export interface AuthState {
     username: string;
     balance: number;
     role: "MODERATOR" | "USER";
+    userId: number;
   } | null;
 }
 

@@ -1,5 +1,6 @@
 export const ROUTES = {
   COURSES: "/api/v1/courses/search",
+  MY_COURSES: "/api/v1/users/purchased-courses",
   MODERATION_COURSES: "/api/v1/courses/moderation/queue/on_moderation",
   COURSE_BY_ID: "/api/v1/courses",
   COURSE_CREATE: "/api/v1/courses",

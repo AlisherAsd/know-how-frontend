@@ -20,7 +20,6 @@ export const ModerationCoursesList = ({ courses = [] }: Props) => {
           >
             <img
               src={
-                course.image ??
                 "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
               }
               alt={course.title}
@@ -41,7 +40,7 @@ export const ModerationCoursesList = ({ courses = [] }: Props) => {
               </div>
 
               <div>
-                <p className="text-sm text-slate-500">{course.username ?? "Автор"} · Автор курса</p>
+                <p className="text-sm text-slate-500">{course.authorId ?? "Автор"} · Автор курса</p>
                 <h3 className="mt-2 text-2xl font-semibold text-slate-950">{course.title}</h3>
                 <p className="mt-3 max-w-3xl leading-7 text-slate-600">{course.description}</p>
               </div>

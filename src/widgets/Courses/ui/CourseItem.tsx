@@ -17,7 +17,6 @@ export const CourseItem: FC<Props> = ({ course }) => {
         <div className="relative h-56 overflow-hidden">
           <img
             src={
-              course.image ??
               "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80"
             }
             alt={course.title}
@@ -36,7 +35,7 @@ export const CourseItem: FC<Props> = ({ course }) => {
         <div className="space-y-5 p-6">
           <div>
             <p className="text-sm text-slate-500">
-              {course.username ?? "Автор"} · {"Автор курса"}
+              {course.authorId ?? "Автор"} · {"Автор курса"}
             </p>
             <h3 className="mt-2 text-2xl font-semibold leading-tight text-slate-950">
               {course.title}

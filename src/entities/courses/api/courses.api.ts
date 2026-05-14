@@ -2,11 +2,13 @@ import { ROUTES } from "../config/courses.config";
 import type { CourseActionParams, CoursesCreateData } from "../types/courses.types";
 import { api } from "@/shared/api/client";
 
-export const courses = async () => {
-  return api.get(ROUTES.COURSES).then((res) => res.data.content);
+export const courses = async (search: string) => {
+  return api.get(ROUTES.COURSES + "?title=" + search).then((res) => res.data.content);
 };
 
-
+export const myCourses = async () => {
+  return api.get(ROUTES.MY_COURSES).then((res) => res.data);
+};
 export const moderationCourses = async () => {
   return api.get(ROUTES.MODERATION_COURSES).then((res) => res.data);
 };
