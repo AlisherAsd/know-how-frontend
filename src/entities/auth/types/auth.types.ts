@@ -7,5 +7,5 @@ export interface RegisterData {
   username: string;
   password: string;
   email: string;
-  moderatorCode: string;
+  moderatorCode?: string;
 }

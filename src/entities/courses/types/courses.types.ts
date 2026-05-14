@@ -7,9 +7,7 @@ export interface CoursesResponseItem {
   tags: string[];
   rating: number;
   authorId: number;
-  username?: string;
-  image?: string;
-  reviews?: number;
+  notForSale: boolean;
 }
 
 export interface CoursesCreateData {

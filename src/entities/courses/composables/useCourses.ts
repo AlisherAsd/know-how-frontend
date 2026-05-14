@@ -1,5 +1,9 @@
 import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
-import type { CourseActionParams, CoursesCreateData, CoursesResponseItem } from "../types/courses.types";
+import type {
+  CourseActionParams,
+  CoursesCreateData,
+  CoursesResponseItem,
+} from "../types/courses.types";
 import {
   courseById,
   courseApprove,
@@ -24,7 +28,6 @@ export const useCourses = (): UseQueryResult<CoursesResponseItem[]> => {
     queryFn: () => courses(),
   });
 };
-
 
 export const useModerationCourses = (): UseQueryResult<CoursesResponseItem[]> => {
   return useQuery({
@@ -67,7 +70,7 @@ export const useCreateCourses = () => {
 const useCourseActionMutation = (
   mutationFn: (params: CourseActionParams) => Promise<unknown>,
   successMessage: string,
-  errorPrefix: string,
+  errorPrefix: string
 ) => {
   const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
@@ -98,7 +101,7 @@ export const useRetryPassModerationCourse = () =>
   useCourseActionMutation(
     courseRetryPassModeration,
     "Курс повторно отправлен на модерацию!",
-    "Ошибка при повторной отправке на модерацию",
+    "Ошибка при повторной отправке на модерацию"
   );
 
 export const useApproveCourse = () =>

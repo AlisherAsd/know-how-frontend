@@ -17,16 +17,16 @@ export const ModerationPage = () => {
       <section className="grid gap-4 md:grid-cols-3">
         <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_30px_90px_-60px_rgba(15,23,42,0.45)]">
           <p className="text-sm text-slate-400">На проверке</p>
-          <p className="mt-2 text-4xl font-semibold text-slate-950">12</p>
+          <p className="mt-2 text-4xl font-semibold text-slate-950">{courses?.length || 0}</p>
         </div>
-        <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_30px_90px_-60px_rgba(15,23,42,0.45)]">
+        {/* <div className="rounded-[32px] bg-white/80 p-6 shadow-[0_30px_90px_-60px_rgba(15,23,42,0.45)]">
           <p className="text-sm text-slate-400">Одобрено сегодня</p>
           <p className="mt-2 text-4xl font-semibold text-slate-950">7</p>
         </div>
         <div className="rounded-[32px] bg-amber-300 p-6 text-slate-950 shadow-[0_35px_110px_-65px_rgba(251,191,36,0.95)]">
           <p className="text-sm text-slate-700">Требуют внимания</p>
           <p className="mt-2 text-4xl font-semibold">3</p>
-        </div>
+        </div> */}
       </section>
 
       <section>

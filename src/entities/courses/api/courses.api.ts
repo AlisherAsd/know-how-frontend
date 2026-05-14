@@ -3,7 +3,7 @@ import type { CourseActionParams, CoursesCreateData } from "../types/courses.typ
 import { api } from "@/shared/api/client";
 
 export const courses = async () => {
-  return api.get(ROUTES.COURSES).then((res) => res.data);
+  return api.get(ROUTES.COURSES).then((res) => res.data.content);
 };
 
 
