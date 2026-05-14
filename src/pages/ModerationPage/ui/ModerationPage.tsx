@@ -1,6 +1,9 @@
 import { ModerationCoursesList } from "@/widgets/Courses/ui/ModerationCoursesList";
+import { useModerationCourses } from "@/entities/courses/composables/useCourses";
 
 export const ModerationPage = () => {
+  const { data: courses = [] } = useModerationCourses();
+
   return (
     <div className="space-y-8 py-8 sm:py-10">
       {/* <section className="rounded-[40px] bg-slate-950 p-8 text-white shadow-[0_45px_120px_-65px_rgba(15,23,42,1)] sm:p-10">
@@ -27,7 +30,7 @@ export const ModerationPage = () => {
       </section>
 
       <section>
-        <ModerationCoursesList />
+        <ModerationCoursesList courses={courses} />
       </section>
     </div>
   );

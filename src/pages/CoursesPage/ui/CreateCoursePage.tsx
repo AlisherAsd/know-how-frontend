@@ -5,10 +5,12 @@ import { useState } from "react";
 import type { CoursesCreateData } from "@/entities/courses/types/courses.types";
 import ReactMarkdown from "react-markdown";
 import { useCreateCourses } from "@/entities/courses/composables/useCourses";
+import { useTags } from "@/entities/tags/composables/useTags";
 
 export const CreateCoursePage = () => {
   useScrollTop();
   const { mutate, isPending } = useCreateCourses();
+  const { data: tags = [], isPending: isTagsPending } = useTags();
 
   const [form, setForm] = useState<CoursesCreateData>({
     title: "",
@@ -19,6 +21,13 @@ export const CreateCoursePage = () => {
 
   function handleCreateCourse() {
     mutate(form);
+  }
+
+  function handleTagChange(tag: string) {
+    setForm((prev) => ({
+      ...prev,
+      tags: tag ? [tag] : [],
+    }));
   }
 
   return (
@@ -57,11 +66,20 @@ export const CreateCoursePage = () => {
                 <span className="mb-2 block text-sm font-medium text-slate-700">Тэги</span>
                 <div className="relative">
                   <CategoryRoundedIcon className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                  <select className="w-full appearance-none rounded-[22px] border border-slate-200 bg-slate-50 px-12 py-4 outline-none transition focus:border-slate-950 focus:bg-white">
-                    <option>Программирование</option>
-                    <option>Языки</option>
-                    <option>Дизайн</option>
-                    <option>Маркетинг</option>
+                  <select
+                    value={form.tags[0] ?? ""}
+                    onChange={(e) => handleTagChange(e.target.value)}
+                    disabled={isTagsPending}
+                    className="w-full appearance-none rounded-[22px] border border-slate-200 bg-slate-50 px-12 py-4 outline-none transition focus:border-slate-950 focus:bg-white disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <option value="">
+                      {isTagsPending ? "Загружаем теги..." : "Выберите тег"}
+                    </option>
+                    {tags.map((tag) => (
+                      <option key={tag} value={tag}>
+                        {tag}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </label>

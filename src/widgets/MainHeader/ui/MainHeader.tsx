@@ -18,7 +18,7 @@ export const MainHeader = () => {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${scrolled ? "pt-0" : "pt-4"}`}
       >
-        <MenuDrawer open={isOpen} setOpen={setIsOpen} isAuth={isAuth} />
+        <MenuDrawer open={isOpen} setOpen={setIsOpen} isAuth={isAuth} role={user?.role} />
         <div
           className={`border border-white/70 bg-white/80 px-4 py-4 shadow-[0_24px_70px_-35px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-all duration-300 sm:px-6 ${
             scrolled ? "rounded-t-none rounded-b-4xl " : "rounded-4xl"
@@ -39,6 +39,9 @@ export const MainHeader = () => {
                 </div>
               </Link>
               <nav className="hidden xl:flex flex-wrap items-center gap-2">
+                {user?.role === "MODERATOR" && isAuth && (
+                  <NavLinkItem item={{ to: ROUTES.MODERATION, label: "Модерация" }} />
+                )}
                 {isAuth ? (
                   NAV_ITEMS.map((item) => <NavLinkItem key={item.to} item={item} />)
                 ) : (

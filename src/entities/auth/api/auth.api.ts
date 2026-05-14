@@ -8,11 +8,17 @@ export const login = async (username: string, password: string) => {
   });
 };
 
-export const register = async (username: string, password: string, email: string) => {
+export const register = async (
+  username: string,
+  password: string,
+  email: string,
+  moderatorCode: string
+) => {
   return api.post(ROUTES.REGISTER, {
     username,
     password,
     email,
+    moderatorCode,
   });
 };
 

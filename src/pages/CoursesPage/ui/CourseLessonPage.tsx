@@ -7,13 +7,21 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+import { useCourseById } from "@/entities/courses/composables/useCourses";
 
 export const CourseLessonPage = () => {
   useScrollTop();
   const { id, lessonId } = useParams();
-  const course = mockCourses.find((item) => String(item.id) === id) ?? mockCourses[0];
+  const courseId = Number(id);
+  const { data } = useCourseById(Number.isFinite(courseId) ? courseId : undefined);
+  const mockCourse = mockCourses.find((item) => String(item.id) === id) ?? mockCourses[0];
+  const course = data ?? {
+    id: mockCourse.id,
+    title: mockCourse.title,
+  };
   const lessonIndex = Math.max(0, Number(lessonId ?? "1") - 1);
-  const lessonTitle = course.lessonsPreview[lessonIndex] ?? course.lessonsPreview[0];
+  const lessonsPreview = mockCourse.lessonsPreview;
+  const lessonTitle = lessonsPreview[lessonIndex] ?? lessonsPreview[0];
 
   return (
     <div className="space-y-8 py-8 sm:py-10">
@@ -26,7 +34,7 @@ export const CourseLessonPage = () => {
           Назад к курсу
         </Link>
         <div className="rounded-full bg-slate-950 px-4 py-3 text-sm font-medium text-white">
-          Урок {lessonIndex + 1} из {course.lessons}
+          Урок {lessonIndex + 1} из {lessonsPreview.length}
         </div>
       </section>
 
@@ -58,7 +66,7 @@ export const CourseLessonPage = () => {
           <div className="rounded-[40px] border border-white/70 bg-white/80 p-6 shadow-[0_35px_100px_-60px_rgba(15,23,42,0.45)] sm:p-8">
             <p className="text-sm uppercase tracking-[0.28em] text-slate-400">Навигация по курсу</p>
             <div className="mt-5 space-y-3">
-              {course.lessonsPreview.map((lesson, index) => {
+              {lessonsPreview.map((lesson, index) => {
                 const isActive = index === lessonIndex;
 
                 return (
@@ -108,7 +116,7 @@ export const CourseLessonPage = () => {
                 <AppButton>Отметить как пройденный</AppButton>
               </Link>
               <Link
-                to={`/courses/${course.id}/lesson/${Math.min(lessonIndex + 2, course.lessonsPreview.length)}`}
+                to={`/courses/${course.id}/lesson/${Math.min(lessonIndex + 2, lessonsPreview.length)}`}
               >
                 <AppButton variant="ghost">Следующий урок</AppButton>
               </Link>

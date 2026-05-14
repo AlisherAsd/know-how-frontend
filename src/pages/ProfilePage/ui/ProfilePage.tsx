@@ -7,8 +7,15 @@ import { useProfilePage } from "../bll";
 import MailIcon from "@mui/icons-material/Mail";
 
 export const ProfilePage = () => {
-  const { isOpenBalance, setIsOpenBalance, isOpenLogout, setIsOpenLogout, data, isPending } =
-    useProfilePage();
+  const {
+    isOpenBalance,
+    setIsOpenBalance,
+    isOpenLogout,
+    setIsOpenLogout,
+    data,
+    isPending,
+    shortUser,
+  } = useProfilePage();
   return (
     <>
       <BalanceModal open={isOpenBalance} handleClose={() => setIsOpenBalance(false)} />
@@ -69,7 +76,9 @@ export const ProfilePage = () => {
                 </div>
                 <div className="rounded-[24px] bg-slate-50 p-5">
                   <p className="text-sm text-slate-400">Роль</p>
-                  <p className="mt-2 text-lg font-semibold text-slate-950">Пользователь</p>
+                  <p className="mt-2 text-lg font-semibold text-slate-950">
+                    {shortUser?.role === "MODERATOR" ? "Модератор" : "Пользователь"}
+                  </p>
                 </div>
                 <div className="rounded-[24px] bg-slate-50 p-5">
                   <p className="text-sm text-slate-400">Кол-во поставленных оценок </p>

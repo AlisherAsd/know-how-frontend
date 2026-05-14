@@ -8,9 +8,10 @@ type Props = {
   open: boolean;
   setOpen: (val: boolean) => void;
   isAuth: boolean;
+  role?: string;
 };
 
-export const MenuDrawer: FC<Props> = ({ open, setOpen, isAuth }) => {
+export const MenuDrawer: FC<Props> = ({ open, setOpen, isAuth, role }) => {
   return (
     <Drawer open={open} onClose={() => setOpen(false)}>
       <div className="p-3 min-w-60">
@@ -22,6 +23,19 @@ export const MenuDrawer: FC<Props> = ({ open, setOpen, isAuth }) => {
           KH
         </NavLink>
         <nav className="flex flex-col mt-4 gap-3">
+          {isAuth && role === "MODERATOR" && (
+            <NavLink
+              to={ROUTES.MODERATION}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `rounded-full py-3 px-5 text-sm font-medium transition ${
+                  isActive ? "bg-slate-950 text-white" : "text-slate-600 hover:bg-slate-100"
+                }`
+              }
+            >
+              Модерация
+            </NavLink>
+          )}
           {isAuth &&
             NAV_ITEMS_MOBILE.map((item) => (
               <NavLink

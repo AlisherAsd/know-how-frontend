@@ -39,8 +39,8 @@ export const useRegister = () => {
   const dispatch = useAppDispatch();
 
   return useMutation({
-    mutationFn: ({ username, password, email }: RegisterData) =>
-      register(username, password, email),
+    mutationFn: ({ username, password, email, moderatorCode }: RegisterData) =>
+      register(username, password, email, moderatorCode),
 
     onSuccess: () => {
       navigate(ROUTES.MAIN);

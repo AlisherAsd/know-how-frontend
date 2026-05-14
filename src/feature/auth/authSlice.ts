@@ -33,6 +33,7 @@ export const authSlice = createSlice({
         state.user = {
           username: action.payload.username,
           balance: action.payload.balance.coins,
+          role: action.payload.role,
         };
       })
       .addCase(authMe.rejected, (state, action) => {

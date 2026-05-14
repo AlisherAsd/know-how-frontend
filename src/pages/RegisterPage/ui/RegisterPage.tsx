@@ -65,6 +65,18 @@ export default function RegisterPage() {
                 />
               </label>
 
+              <label className="block">
+                <span className="mb-2 block text-sm font-medium text-slate-700">
+                  Код модератора (ТЕСТОВОЕ ПОЛЕ)
+                </span>
+                <input
+                  value={user.moderatorCode}
+                  onChange={(e) => setUser((val) => ({ ...val, moderatorCode: e.target.value }))}
+                  placeholder="Введите код если вы модератор"
+                  className="w-full rounded-[22px] border border-slate-200 bg-slate-50 px-5 py-4 outline-none transition focus:border-slate-950 focus:bg-white"
+                />
+              </label>
+
               <AppButton
                 onClick={handleRegister}
                 disabled={disabledBtn}

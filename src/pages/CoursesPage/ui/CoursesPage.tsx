@@ -25,7 +25,7 @@ export const CoursesPage = () => {
 
       <section className="rounded-[40px] border border-white/70 bg-white/70 p-6 shadow-[0_35px_100px_-60px_rgba(15,23,42,0.45)] backdrop-blur-xl sm:p-8">
         <CoursesList
-          title={category ? `Подборка по категории: ${category}` : "Весь каталог курсов"}
+          title={category ? `Подборка по тегу: ${category}` : "Весь каталог курсов"}
           subtitle="Сетка собрана так, чтобы ее потом было легко связать с API, поиском и фильтрацией без переписывания UI."
           activeCategory={category}
           courses={data}
